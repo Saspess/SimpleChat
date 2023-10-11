@@ -13,6 +13,9 @@ namespace SimpleChat.Data.Configurations
                 .UseIdentityColumn(1, 1)
                 .ValueGeneratedOnAdd();
 
+            builder.Property(c => c.CreatorId)
+                .IsRequired();
+
             builder.Property(c => c.Name)
                 .HasMaxLength(100)
                 .IsRequired();
