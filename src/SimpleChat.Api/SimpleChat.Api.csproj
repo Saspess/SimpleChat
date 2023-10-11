@@ -11,4 +11,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleChat.Business\SimpleChat.Business.csproj" />
+    <ProjectReference Include="..\SimpleChat.Data\SimpleChat.Data.csproj" />
+  </ItemGroup>
+
 </Project>
