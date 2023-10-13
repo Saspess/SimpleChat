@@ -14,7 +14,7 @@ namespace SimpleChat.Data.Repositories.Implementation
         public async Task<UserEntity?> GetByUserNameAsync(string username) =>
             await appContext.Users
             .AsNoTracking()
-            .FirstOrDefaultAsync(u => u.UserName == username);
+            .FirstOrDefaultAsync(u => u.Username == username);
 
         public async Task<UserEntity?> GetByEmailAsync(string email) =>
             await appContext.Users

@@ -21,7 +21,7 @@ namespace SimpleChat.Data.Configurations
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder.Property(u => u.UserName)
+            builder.Property(u => u.Username)
                 .HasMaxLength(100)
                 .IsRequired();
 
