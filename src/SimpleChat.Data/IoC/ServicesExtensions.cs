@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SimpleChat.Data.Contexts.Contracts;
 using SimpleChat.Data.Contexts.Implementation;
+using SimpleChat.Data.Repositories.Contracts;
+using SimpleChat.Data.Repositories.Implementation;
 
 namespace SimpleChat.Data.IoC
 {
@@ -10,8 +12,10 @@ namespace SimpleChat.Data.IoC
     {
         public static IServiceCollection ConfigureDataLayer(this IServiceCollection services, IConfiguration configuration)
         {
-            services.ConfigureSqlContext(configuration)
-                .ConfigureDbContext();
+            services
+                .ConfigureSqlContext(configuration)
+                .ConfigureDbContext()
+                .ConfigureRepositories();
 
             return services;
         }
@@ -28,6 +32,15 @@ namespace SimpleChat.Data.IoC
         public static IServiceCollection ConfigureDbContext(this IServiceCollection services)
         {
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+
+            return services;
+        }
+
+        public static IServiceCollection ConfigureRepositories(this IServiceCollection services)
+        {
+            services.AddScoped<IChatRepository, ChatRepository>();
+            services.AddScoped<IUserChatRepository, UserChatRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }
