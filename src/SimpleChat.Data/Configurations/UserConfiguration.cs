@@ -25,9 +25,15 @@ namespace SimpleChat.Data.Configurations
                 .HasMaxLength(100)
                 .IsRequired();
 
+            builder.HasIndex(u => u.Username)
+                .IsUnique();
+
             builder.Property(u => u.Email)
                 .HasMaxLength(100)
                 .IsRequired();
+
+            builder.HasIndex(u => u.Email)
+                .IsUnique();
         }
     }
 }
