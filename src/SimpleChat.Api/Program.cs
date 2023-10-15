@@ -1,3 +1,4 @@
+using SimpleChat.Api.Middleware;
 using SimpleChat.Business.IoC;
 using SimpleChat.Data.IoC;
 
@@ -16,6 +17,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
