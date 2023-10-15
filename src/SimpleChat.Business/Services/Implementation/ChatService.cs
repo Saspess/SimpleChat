@@ -11,12 +11,14 @@ namespace SimpleChat.Business.Services.Implementation
     {
         private readonly IChatRepository _chatRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IUserChatRepository _userChatRepository;
         private readonly IMapper _mapper;
 
-        public ChatService(IChatRepository chatRepository, IUserRepository userRepository, IMapper mapper)
+        public ChatService(IChatRepository chatRepository, IUserRepository userRepository, IUserChatRepository userChatRepository, IMapper mapper)
         {
             _chatRepository = chatRepository ?? throw new ArgumentNullException(nameof(chatRepository));
             _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
+            _userChatRepository = userChatRepository ?? throw new ArgumentNullException(nameof(userChatRepository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
@@ -58,12 +60,19 @@ namespace SimpleChat.Business.Services.Implementation
         {
             ArgumentNullException.ThrowIfNull(chatCreateDto, nameof(chatCreateDto));
 
-            var existingUserEntity = _userRepository.GetByIdAsync(chatCreateDto.CreatorId)
+            var existingUserEntity = await _userRepository.GetByIdAsync(chatCreateDto.CreatorId)
                 ?? throw new NotFoundException("Creator was not found.");
 
             var chatEntity = _mapper.Map<ChatEntity>(chatCreateDto);
 
             var createdChatEntity = await _chatRepository.CreateAsync(chatEntity);
+
+            await _userChatRepository.CreateAsync(new UserChatEntity 
+            { 
+                ChatId = createdChatEntity.Id, 
+                UserId = chatCreateDto.CreatorId
+            });
+
             var chatViewDto = _mapper.Map<ChatViewDto>(createdChatEntity);
 
             return chatViewDto;

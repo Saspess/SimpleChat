@@ -26,7 +26,7 @@ namespace SimpleChat.Business.Services.Implementation
 
         public async Task<IEnumerable<ChatUserViewDto>> GetAllUsersByChatIdAsync(int chatId)
         {
-            var existingUserEntity = _chatRepository.GetByIdAsync(chatId)
+            var existingUserEntity = await _chatRepository.GetByIdAsync(chatId)
                 ?? throw new NotFoundException("Chat was not found.");
 
             var userChatEntities = await _userChatRepository.GetAllChatUsersAsync(chatId);
@@ -37,7 +37,7 @@ namespace SimpleChat.Business.Services.Implementation
 
         public async Task<IEnumerable<UserChatViewDto>> GetAllChatsByUserIdAsync(int userId)
         {
-            var existingUserEntity = _userChatRepository.GetByIdAsync(userId)
+            var existingUserEntity = await _userChatRepository.GetByIdAsync(userId)
                 ?? throw new NotFoundException("User was not found.");
 
             var userChatEntities = await _userChatRepository.GetAllUserChatsAsync(userId);
@@ -50,10 +50,10 @@ namespace SimpleChat.Business.Services.Implementation
         {
             ArgumentNullException.ThrowIfNull(userChatCreateDto, nameof(userChatCreateDto));
 
-            var existingUserEntity = _userRepository.GetByIdAsync(userChatCreateDto.UserId)
+            var existingUserEntity = await _userRepository.GetByIdAsync(userChatCreateDto.UserId)
                 ?? throw new NotFoundException("User was not found.");
 
-            var existingChatEntity = _chatRepository.GetByIdAsync(userChatCreateDto.ChatId)
+            var existingChatEntity = await _chatRepository.GetByIdAsync(userChatCreateDto.ChatId)
                 ?? throw new NotFoundException("Chat was not found.");
 
             var userChatEntity = _mapper.Map<UserChatEntity>(userChatCreateDto);
@@ -66,7 +66,7 @@ namespace SimpleChat.Business.Services.Implementation
 
         public async Task DeleteFromChatAsync(int id)
         {
-            var existingUserChatEntity = _userChatRepository.GetByIdAsync(id)
+            var existingUserChatEntity = await _userChatRepository.GetByIdAsync(id)
                 ?? throw new NotFoundException("User chat was not found.");
 
             await _userChatRepository.DeleteAsync(id);
