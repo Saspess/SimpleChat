@@ -16,5 +16,11 @@ namespace SimpleChat.Data.Repositories.Implementation
             .AsNoTracking()
             .Where(c => c.CreatorId == creatorId)
             .ToListAsync();
+
+        public async Task<IEnumerable<ChatEntity>> GetAllByNameAsync(string name) =>
+            await appContext.Chats
+            .AsNoTracking()
+            .Where(c => EF.Functions.Like(c.Name, $"%{name.ToLower()}%"))
+            .ToListAsync();
     }
 }
