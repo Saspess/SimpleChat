@@ -36,6 +36,14 @@ namespace SimpleChat.Business.Services.Implementation
             return chatViewDtos;
         }
 
+        public async Task<IEnumerable<ChatViewDto>> GetAllByNameAsync(string name)
+        {
+            var chatEntities = await _chatRepository.GetAllByNameAsync(name);
+            var chatViewDtos = _mapper.Map<IEnumerable<ChatViewDto>>(chatEntities);
+
+            return chatViewDtos;
+        }
+
         public async Task<ChatViewDto> GetByIdAsync(int id)
         {
             var chatEntity = await _chatRepository.GetByIdAsync(id)

@@ -6,6 +6,7 @@ namespace SimpleChat.Business.Services.Contracts
     {
         Task<IEnumerable<ChatViewDto>> GetAllAsync();
         Task<IEnumerable<ChatViewDto>> GetAllByCreatorIdAsync(int creatorId);
+        Task<IEnumerable<ChatViewDto>> GetAllByNameAsync(string name);
         Task<ChatViewDto> GetByIdAsync(int id);
         Task<ChatViewDto> CreateAsync(ChatCreateDto chatCreateDto);
         Task UpdateAsync(ChatUpdateDto chatUpdateDto);
