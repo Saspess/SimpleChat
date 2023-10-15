@@ -24,5 +24,11 @@ namespace SimpleChat.Data.Repositories.Implementation
             .Where(uc => uc.ChatId == chatId)
             .Include(uc => uc.User)
             .ToListAsync();
+
+        public override async Task<UserChatEntity?> GetByIdAsync(int id) =>
+            await appContext.UserChats
+            .AsNoTracking()
+            .Include(uc => uc.User)
+            .FirstOrDefaultAsync(uc => uc.Id == id);
     }
 }
