@@ -58,7 +58,10 @@ namespace SimpleChat.Business.Services.Implementation
 
             var userChatEntity = _mapper.Map<UserChatEntity>(userChatCreateDto);
 
-            var createdChatUserEntity = await _userChatRepository.CreateAsync(userChatEntity);
+            var createdUserChatEntity = await _userChatRepository.CreateAsync(userChatEntity);
+
+            var createdChatUserEntity = await _userChatRepository.GetByIdAsync(createdUserChatEntity.Id);
+
             var userChatViewDto = _mapper.Map<ChatUserViewDto>(createdChatUserEntity);
 
             return userChatViewDto;
