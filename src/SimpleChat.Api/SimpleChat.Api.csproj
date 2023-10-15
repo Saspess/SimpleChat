@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SimpleChat.Business\SimpleChat.Business.csproj" />
     <ProjectReference Include="..\SimpleChat.Data\SimpleChat.Data.csproj" />
   </ItemGroup>
