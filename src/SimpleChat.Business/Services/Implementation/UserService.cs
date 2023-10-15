@@ -50,7 +50,7 @@ namespace SimpleChat.Business.Services.Implementation
 
         public async Task<UserViewDto> GetByUsernameAsync(string username)
         {
-            var userEntity = await _userRepository.GetByUserNameAsync(username)
+            var userEntity = await _userRepository.GetByUsernameAsync(username)
                 ?? throw new NotFoundException("User was not found.");
 
             var userViewDto = _mapper.Map<UserViewDto>(userEntity);
