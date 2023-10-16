@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\SimpleChat.Api\SimpleChat.Api.csproj" />
+    <ProjectReference Include="..\SimpleChat.Api\SimpleChat.Api.csproj" />
   </ItemGroup>
 
 </Project>
