@@ -1,3 +1,4 @@
+using SimpleChat.Api.Hubs;
 using SimpleChat.Api.Middleware;
 using SimpleChat.Business.IoC;
 using SimpleChat.Data.IoC;
@@ -10,7 +11,8 @@ builder.Services.AddControllers();
 
 builder.Services
     .ConfigureDataLayer(builder.Configuration)
-    .ConfigureBusinessLayer();
+    .ConfigureBusinessLayer()
+    .AddSignalR();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -19,6 +21,8 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
+
+app.MapHub<ChatHub>("chat-hub");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
