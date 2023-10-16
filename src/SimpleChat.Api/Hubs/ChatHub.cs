@@ -26,7 +26,7 @@ namespace SimpleChat.Api.Hubs
             var existingUserChatViewDto = await _userChatService.GetByUserIdAndChatIdAsync(chatId, userId)
                 ?? throw new AccessDeniedException("User is not a chat member.");
 
-            await Clients.Group(existingUserChatViewDto.Id.ToString()).SendAsync("Recive", message);
+            await Clients.Group(existingUserChatViewDto.Id.ToString()).SendAsync("ReciveMessage", message);
         }
     }
 }
