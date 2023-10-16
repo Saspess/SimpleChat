@@ -5,11 +5,13 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{682FD49E-8E51-449D-8A4A-B5CE6C0EA55E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleChat.Api", "src\SimpleChat.Api\SimpleChat.Api.csproj", "{5BAD2406-7791-495B-8171-147700ACE206}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleChat.Api", "src\SimpleChat.Api\SimpleChat.Api.csproj", "{5BAD2406-7791-495B-8171-147700ACE206}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleChat.Data", "src\SimpleChat.Data\SimpleChat.Data.csproj", "{6B624ECD-3655-4737-9860-7BAABBFE735A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleChat.Data", "src\SimpleChat.Data\SimpleChat.Data.csproj", "{6B624ECD-3655-4737-9860-7BAABBFE735A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleChat.Business", "src\SimpleChat.Business\SimpleChat.Business.csproj", "{7858C105-3883-41AF-813A-F2448761AFD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleChat.Business", "src\SimpleChat.Business\SimpleChat.Business.csproj", "{7858C105-3883-41AF-813A-F2448761AFD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleChat.IntegrationTests", "src\SimpleChat.IntegrationTests\SimpleChat.IntegrationTests.csproj", "{293CB418-8ECF-49AA-91ED-571544D61F12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{7858C105-3883-41AF-813A-F2448761AFD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7858C105-3883-41AF-813A-F2448761AFD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7858C105-3883-41AF-813A-F2448761AFD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{293CB418-8ECF-49AA-91ED-571544D61F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{293CB418-8ECF-49AA-91ED-571544D61F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{293CB418-8ECF-49AA-91ED-571544D61F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{293CB418-8ECF-49AA-91ED-571544D61F12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +43,7 @@ Global
 		{5BAD2406-7791-495B-8171-147700ACE206} = {682FD49E-8E51-449D-8A4A-B5CE6C0EA55E}
 		{6B624ECD-3655-4737-9860-7BAABBFE735A} = {682FD49E-8E51-449D-8A4A-B5CE6C0EA55E}
 		{7858C105-3883-41AF-813A-F2448761AFD1} = {682FD49E-8E51-449D-8A4A-B5CE6C0EA55E}
+		{293CB418-8ECF-49AA-91ED-571544D61F12} = {682FD49E-8E51-449D-8A4A-B5CE6C0EA55E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E85A9BA9-F9D5-435D-8C44-B9B6498A13A3}
