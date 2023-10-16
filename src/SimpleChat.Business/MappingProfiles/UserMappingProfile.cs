@@ -11,9 +11,11 @@ namespace SimpleChat.Business.MappingProfiles
             CreateMap<UserEntity, UserViewDto>();
 
             CreateMap<UserCreateDto, UserEntity>()
-                .ForMember(dest => dest.Id, opt => opt.Ignore());
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.UserChats, opt => opt.Ignore());
 
-            CreateMap<UserUpdateDto, UserEntity>();
+            CreateMap<UserUpdateDto, UserEntity>()
+                .ForMember(dest => dest.UserChats, opt => opt.Ignore());
         }
     }
 }
